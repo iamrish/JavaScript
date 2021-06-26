@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles/app.css" />
+  </head>
+  <body>
+    <header>
+      <h1>The Unconventional Calculator</h1>
+    </header>
+
+    <section id="calculator">
+      <!-- Even though the input type is a number, it si still read as a string in the javascript. 
+      lso, number means both, float and integer. -->
+      <input type="number" id="input-number" />
+      <div id="calc-actions">
+        <button type="button" id="btn-add">+</button>
+        <button type="button" id="btn-subtract">-</button>
+        <button type="button" id="btn-multiply">*</button>
+        <button type="button" id="btn-divide">/</button>
+      </div>
+    </section>
+    <section id="results">
+      <h2 id="current-calculation">0</h2>
+      <h2>Result: <span id="current-result">0</span></h2>
+    </section>
+
+    <!-- 1. The ordering of these scrip tags matters as well. This implies we can utilies the things used in the above tags,
+    in the lower tags or lower placed javascript file. -->
+    <script src="assets/scripts/vendor.js"></script>
+    <!-- 2. The postion of the script tag matters. If it placed aboive, before the browser is able to parse the whole html,
+    the pop-up apperas first and then the html page.-->
+    <script src="assets/scripts/app.js"></script>
+  </body>
+</html>

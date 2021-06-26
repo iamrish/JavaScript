@@ -1,0 +1,21 @@
+{
+  "name": "practice-oop-08-base-component-class",
+  "version": "1.0.0",
+  "description": "Practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "build-dev": "webpack serve",
+    "build-prod": "webpck --config webpack.config.prod.js"
+  },
+  "author": "Rishabh Malhotra",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "*",
+    "eslint": "^7.29.0",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

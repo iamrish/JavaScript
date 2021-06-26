@@ -1,0 +1,252 @@
+				    JS - Maximiallian Shwarzmuller
+					      (Udemy) 
+
+- JS is an interpreted language(compiled at runtime)
+- It is dynamic and weakly typed.
+- Used in frontend. Uses host for computations. Can also be used in backend
+- Data types are assumed. Declare nahi karne hote variables.Thus, Weakly Typed.
+- JS is case sensitive
+- You'll have to use semicolon if you write two statements in one line. For example, let one = 1; let two = 2;
+- Exponentiation is '**', just like python.
+- Shadowed variables are those variables that are declared in a block scope as well as in the global scope. So what happens is that when the variable is accessed in the function, the shadowed variable takes the value passed in the function and not the value decalred/defined globally.
+- Has +=, -= etc. and ++ and -- as well. Both pre and post increment and decrement operators are available.
+- 'typeof' operator is used as eg: typeof 'Rishabh'. typeof null will give object. typeof [] will also give object. undefined is its own type. NaN is of the type number.
+- 'defer' and 'async' properties are used in script tag of HTML. 'defer' tells the browser to continue parsing HTML even though the js files are bein loaded. Whereas, in async, the execution of the script starts as soon as it is loaded. This might lead to erros. Also, it is not confirmed which of the multiple file loads will be done first. Thus, it is recommended to use 'async' with one js file only that is independent of the HTML code.
+- 2 == '2' is true but 2 === '2' is false.
+- nested ternary operator is possible
+- using || and && operator for truthy and falsy values returns the truthy or falsy value and not a boolean value. for eg: const name = someInput || "Max". If someInput is empty, "Max" will be returned and not the boolean value true. If soeInput contains some string, the string in someInput will be returned. 
+- !! is used to convert a truthy or falsy value to a boolean value
+
+5. Behind the Scenes & The (Weird) Past (ES3, ES5) & Present (ES6+) of JavaScript:
+- When we use '.' after the primitive types, those primitve types are actually converted to objects and then dealt with.
+- Hoisting: JS goes through all the code and register things like functions with itself which allows us to use function definitions even below the function call. It does so with the case of vairbales too but an error generated with 'let' and not with 'var' coz iot intializes the variable in the case of 'var' but not in the case of 'let/const'. In case of var, the value is not printed but undefined is printed. To hoist karke bhi koi khaas fayeda haini :P
+For eg:
+console.log(userName);
+var userName= "Rishabh"
+The above example will not give an error for var but will give an error for let. Error is undeclared usage of the variable. Use pehle karra hu par declare baadme.
+- With 'var' even multiple declarations are possible!
+var userName;
+var userName; is fine
+- JS allows the following DECLARATION:
+userName = "Rishabh". I am not re-assigning the value value here. I am declaring the variable for the first time. By default, 'var' is automatically added to the declaration.
+- Even 'var undefined' is allowed where undefined is a keyword. But if we use strict mode, it behaves to generate an error! 
+- How to use strict mode?
+A) Type 'use strict'; at the top of the script with the quotes included. Using strict mode, using variable defore declaration is note allowed, using undefined as a variable name with 'var' is not allowed, etc. The usage of 'undefined' as a variable name is not allowed while using 'let' to declare variables.
+- The interpreter parses the code into byte code and starts the executions. The JiT compiler optimizes the code for faster execution and gives out machine code for your computer. The compiler compiles and optimizes side-by-side.
+- JS is "single threaded"!
+- Event loop will help us with asynchronous executions. It is in the browser and not in Js engine!
+- The browser decides where a variable might get stored. 
+- '...' is used enumerate arrays and objects so as to make new copy and not copy the reference.
+
+6. More on Functions:
+- Functions are objects. typeof funcitonName gives the type as a function but if we do console.dir(functionName), it displays a structure like an object.
+- Anonymous function is a function where we pass reference to the function!
+- Default arguments ka similar hi scene hai. Ye hai ki parameters bhejte time unki position kuchh bhi ho sakti hai, zaruri nahi hai ki last hi honi chaiye. Aur agar argument me undefined bheju to default value hi use ki jayegi na ki undefined. 
+- Rest operator is a parameter that takes in all the arguments sent byt the caller. Thus, is must be the last parameter in the function definition. eg: (...numbers) => {//calc the sum in a for loop and return}
+- 'arguments' is a keyword available with the functions defined as function {optionName}(){}. It is an array of all the arguments and iterating over this keyword is possible though NOT RECOMMENDED.
+
+7. Working with the DOM (Browser HTML Code) in JavaScript
+- Browser providess Web API to javascript in the form of DOM. 
+- Every HTML element is is translated into a anode by the browser. Even the text is converted into nodes, known as text nodes.
+- DOM nodes are just JS objects in the end - i.e. reference values. These methods return the object references(addresses). 
+- qeuerySelectorAll() method does not return live elements. Elements can be added or deleted to the HTML page using JS so these must be called live elements.
+- ATTRIBUTE is the HTML code ssetting up the details like, id, class etc. PROPERTIES are a part of the object!
+- Not always is 1:1 mapping possible between the attribute name and the property name.
+- innerHTML property swaps all the HTML code in the element with the text you enter. Ofcourse, pone way around is to concatenate the string that is to be added. But that leads to re-rendering the elements that did not undergo any change. This can be very bad for user experience. Also, if I am using a text box and usser enters some invalid value and I use this method, the value entered by the user disapperas and the text box now has the default value because it was re-rendered. Therefore, insertAdjacentHTML is used.
+- The problem with insertAdjacentHTML is that if I have to somehow manipulate the newly added HTML code, it will be difficult acces it.
+- createElement(<tag name>) is ALWAYS used with document object, and is used to add elements to the existing setting. Functions frequently used are prepend(), append() and appendChild().
+- The existing DOM objects are not copied when we try to move them around. They are uprooted from their current pposition and moved to a different one. 
+- cloneNode method is used to copy the DOm object. cloneNode(false) means noe child node will be clone but a true means everything will be cloned. It is copying and not re-ceating.
+- getElementsBy(something) methods always give object with live lists that cchange when number of the items change. querySelectorAll does not handle the live settings well. For eg: if a ul has 3 li and we add one more, the object of querySelectAll will still show 3 elements only but the elements added will be displlayed on the screen.
+-removeChild() is teh recomemnded way to delete.
+
+8. More on Arrays & Iterables
+- Arrays can be of mixed types, unlike C++
+- slice(start, end). Start is included, end is not. Wahi python jaisa. Returns a new array.
+- splice function is used to add values somewhere in between the arrays, and also delete the values jo beechme hain.
+- push adds the value at the end, unshift adds the value at the start, pop ends the last value and shift deletes the first value of the array.
+- Agar koi array ki length 2 hai leking main arrayName[5] = value kar deta hu to 6th pos pe value add ho jayengi aur beech ki values saari e,pty hongi. Emty values in the array basically mean undefined is present there. 
+- Accessing the elemts like arrayName[-1] does not give an error but gives undefined.
+- slice and splice methods can also use negative indexes.
+- find method is used to find objects in arrays. It takes 3 arguments, theCurrentObject, idx and theWholeArray. It can also be used to finds ints etc. The method returns the original array object therefore changing the returned object will actually change the original object present in the array. On similar methods works the finIndex method. The difference is that it just returns the index.
+- includes method finds if the element is present in the array. returns -1 otherwise. indexOf also return -1 if the number given not found.
+- there is a forEach method as well. It again takes in the same arguments as find and finIndex method. To har ek object pe kuchh tranfomration lagani ho, for example, to ye kar sakte hain.
+- map method returns a new array. The fucntion in map has to return each tranformed element. Upar waale methods me return karne ki koi neccessity nahi thi. 
+- sort method compares its elements as astring. But usme function banake likhoge to badhiya sort ho jayega.
+- Objects can have only strings, integers and symbols as their keys but there is not such weaknesses in maps.
+
+9. More on Objects
+- 'this' keyword inside of function, no matter that function is a part of a Object or not, refers to whatever called that function. 
+- Ek Object.assign() method bhi hota hai bina reference ke object copy karne kee liye
+- 'in' bhi hota hai JS me jaise python me hota tha. Max showed an example to check the presence of a key inside an object using in. Arrays ka example nahi diya tha, check kar liyo.
+- Arrow fucntions do not know 'this' keyword. 'this' in an arrow function will return the Window element. Or, 'this' refers to whatever 'this' refers to outside of the function. Interesting... In strict mode, using 'this' returns undefined. 
+
+10. Classes & Object-oriented Programming(OOP)
+- In JS, inheriting from only one class is allowed. You cannot inherit frommultiple classes.
+- If the subcalss does not have constructor, the constructor of the paarent class is automatically called. But when a constructor is added to the subclass, the constructor of the super class is not called. 
+- Overriding bhi chal jaati hai!
+- Fields are created only after the parent constructor has been executed.
+- Video 256. is weird!
+- #variableName or #functionName() makes them provate
+- There are object descriptors that help us to changes the intrinsic properties of object properties. These are enumerable, writable and configurable. The first two properties are really intuitive. The third one determines if the object property can be deleted or not. 
+
+11. Deep Dive: Constructor Functions & Prototypes 
+- Constructor fucntions are used to implement classes in the background of JavaScript. Firstly, constructor functions are not same as the constructor methods(the conventional constructors), dono alag cheezein hain. The following code snipped is Constructor functions-
+
+function Person(){
+	this.age = 30;
+	this.name = "Max";
+	this.greet = function(){}
+}
+const person = new Person(); //dekh 'new' hai idhar fucntion call me. Yahi matter karta hai!
+person.greet()
+
+What the 'new' keyword does in the above code is essentially this- 
+
+function Person(){
+	this = {};//new stmt added
+	this.age = 30;
+	this.name = "Max";
+	this.greet = function(){}
+	return this;//new stmt added
+}
+
+It does not exactly what is written above, it deos something on the similar grounds in the background.
+- The variable initialisation in classes is basically the statements that are written in the constructor function. But, the functions, like greet() in the above example, are handled differently. They using something known as Prototypes.
+- Constructor functions and prototypes together handle the JS Object int he background.
+- Prototypes are like fallback objects. Kuchh main object me nahi milta to prototype object me dhoona jaata hai. And since prototype is an object, it has its own prototype object! This chain continues until we reach Object.__proto__(). Okay? Cool! Also, object prototypes allow the code sharing among the classes.
+- The 'prototype' property exists only in fucntion objects and is different from '__proto__' which is the main prototype property!
+- The object in 'prototype' and the object in '__proto__' are exactly the same. Not even copies but === waala same.
+- The 'prototype' property allows you to add more fallback functions. 
+- This is what extends does basically. You assign a new object to the prototype.
+- The parent class becomes the fallback class while inheritance. That is why super() is to be called first in a sub-class conteructor! The parent object needs to created first, before creating the child object.
+- Dekh, everty 'object' has prototype. Class ka kya hota hai, console.dir(className) karke dekh.
+- The prototype chain ends on Object.prototype and not on the Object itself.
+- The methods of an object are added to a prototype and not to the object itself. This is done as a little optimisation byt the JS. The logic behind is that fucntions do not change with the several objects created. Theresfore, inroder to save some space and thus improve perfomance, one prototype object is shared among all the objects created. Therefore, this prototype function has the methods of the object. Interesting. But aisa tabhi hota hai jab main vo shorthand use karu class me fucntion likhne ke liye. example-
+
+//the shorthand method
+class Person{
+
+	greet(){...}
+}
+
+//the method that allows greet tot be created for every object
+class Person{
+
+	greet = function(){...}
+}
+
+Thus, the second method will not result in any optimisation and each object will have its copy of the function greet.
+
+13. Back to the DOM & More Browser APIs
+- 'dataset' is property that holds on to to the 'data-*' properties that can be added to the the HTMl elements. Refer to this module's index.html, the data-extra-info property is added to the <li> tag.
+- getBoundingClientRect() gives us the coordinates of the selected DOM object. bottom, top, left, right, height, width and x and y.
+- offsetTop is relative to your document start, NOT to the viewport i.e. if does not change upon scrolling.
+- <template> tag allows you to add HTML code to your scripts without actually writing the TML code in your script. <template> tag is added in the html file. Fir waise hi jaise manipulate karte hain tags JS me, vo karke manipulate kar sakte ho. Aise HTML code .js file me nahi likhna padha.
+- These are window object's functions. setTimeout(fn, timer, arrayofargs) sets a timer. The script will not pause while this is executing. It runs once. clearTimeout(timerId) where timerId is returned by setTimeout is used to clear the Timeout fucntion set.
+- setInterval(fn, timer, arrayofargs) execute the fn every timer seconds. clearIntervals(timerId) is used to clear the interval or stop the interval.
+- There's is a Date object in JS.
+- There's an Error object too.
+
+14. Working with Events
+- Capturing and Bubbling(Done by browser)
+Let's assume, yor html structure is like this-
+
+<section>
+<div>
+	<button></button>
+</div>
+</section>
+
+Capturing moves outside-to-inside. This means that if you click on the button, firstly the event listeners to section will be executed, then div and then, finally, of the button. 
+Bubbling moves inside-to-outside. These are addEventListeners waale listeners. Firstly, the inner ones will be executed and then the outer ones.
+- The above mentioned thingy is called propagation since the events are propagting from inside to outside or from outside to inside.
+- event.stopPropagation()  and event.preventDefualt() are very useful methods. The former ones stops the event propagation while the latter one prevents the default behaviour like that of submit button where it submits its data back to the server. Thus, we can first check the data and then send it back to the server if we want to.
+- Event delegation is using the event propagation for out advg. Like, setting an event listener for ul but clicking an li, when can actually manipulate each li using event.target. .target returns tha li that was clicked upon. .currentTarget returns the element upon which listener was set.
+- 'this' inside a fucntion binds to the event.currentTarget .
+- Drag and Drop waala dkehliyo ek baar
+
+15. Advanced function Concepts
+- Pure Functions: Same input always produces same ouput without andy side effects i.e. it does not change anything outside the fucntion.
+- Every funtion in javascrip is a closure.
+- Closure: the fucntion remembers the surrounding varibale so that even if a value is not being used outside the fucntion, it does not get disposed off. Although, the logged or remebered value changes if the changes are made to the outside the fucntion value.
+- Scope is also called lexical environment
+
+ More on numbers and strings
+- Every number is a float. There is no integer type in JS.
+- Numbers are stored as 64 bit floating points.
+- There is a 'Number' object in JS.
+- tagged templates are amazing. They can be used to convert strings to objects. So, what it does is that, for example, you are passing a string with dynamic elements to a function. Now, this function is called differently. The function call is mentioned below - 
+
+funtionName`This is a ${stringName} string`
+
+Yes, it is called using backticks. What happens is that the first argument you receive in the function is an array of all the static string parts. Example- 
+
+functionName(strings, stringName){
+	console.log(strings, stringName);
+}
+
+strings = ['This is a ', ' string']
+stringName = 'dynamic'
+
+I can return anything now since I can work with different parts of the string.
+
+17. Async JavaScript: Promises & Callbacks
+- Async code is managed using the browser.
+- A call back function is sent to the browser so that it can come back to javascript once it is done with its share of async code. These are how the vent listeners are handled in backend. We tell them which function to executte when the event occurs and then it comes back to the JS.
+- To hota kya hai ki jo funciton browser ko execute karna hota hiana vo phir browser ek messageQueue me daal deta hai. TO jab function stack khatam ho jaata hai yaani ki Js ke ongoing processes khatam ho jaate hain phir vo function messageQueue se stack pe jaata hai aur execute kiya jaata hai. Ye last waala part event loop karta hai. Vo detect karta hai ki stack khaali hai kya agar hai to phir uspe cheezein push hoti hain! Nice!
+- Vid 354. marked for revisit for promises.
+- A promise has 3 states, resolved, unresolved, rejected.
+- If anything else other than a promise is returned from the function inside a then() stmt then that is converted to promise.
+- We can also use catch stmt with promise chains. It is important where you keep the catch stmt. If you place it last and somewhere an error occurs, all the remaining then stmts will be skipped and the catch block will be executed. If it placed in between then all the then stmts between the error generator and the catch statement will be skipped but all the then stmts following catch stmt will be executed. Multiple catches are also supported. Instead od using catch stmts we can just give the second arguments to the then function, where the second argument is just a failiure function.
+-
+    PENDING => Promise is doing work, neither then() nor catch() executes at this moment
+
+    RESOLVED => Promise is resolved => then() executes
+
+    REJECTED  => Promise was rejected => catch() executes
+
+When you have another then() block after a catch() or then() block, the promise re-enters PENDING mode (keep in mind: then() and catch() always return a new promise - either not resolving to anything or resolving to what you return inside of then()). Only if there are no more then() blocks left, it enters a new, final mode: SETTLED.
+
+Once SETTLED, you can use a special block - finally() - to do final cleanup work. finally() is reached no matter if you resolved or rejected before.
+- Async fucntions return Promises. They rap everything inside the function into a Promise.
+- A Promise can resolve more than once. In then function we get the data that is 'resolved'. The 'resolved' data is whatever we pass as the argument of the redolve function.
+- The 'await' keyword is just a concise way to write the then blocks.
+- Async/await ke saath error handling try/catch se ki jaati hai. And it is only available with functions.
+- Also, if you have to run different pieces of code simultaneously, async/await is not the way to go. Vid no. 360 for example.
+
+18. Working with Http Requests
+- fetch() works wiht modern browsers only and is handles by promises. Error handling is cumbersome. 
+- error handling was bit tricky in this one
+
+19. Third part libraries
+- Lodash(utility functions like difference in arrays)
+- jQuery
+- axios(for http requests). Better error handling.
+
+20. Modular Javascript
+- import statements are used to use the exported component of the file. That's right, you have to write the keyword export in front of the class/function and ig variables too, to export them.
+- 'export default' is used to define the defualt exports of the the file, veri clear by the name of the keyworkds.
+- 'import("filepath")' is a function that returns promises and hence we can use this function for dynamic imports. It returns the mode to the then fucntion and thus module.componentName can be used to access the component needed. This reduces the initial loading time.
+- modules by default use strict mode.
+- globalThis is a pointer to the window object. In modules since this gives undefined when you utilize it outised of every block, we have a globalThis pointer.
+- The non expoted code works only when the module is imported for the first time.
+
+22. Utilizing Browser Storage
+- localStorage, sessionStorage:
+simple key value pairs. example, store sessionID. Only user and JS can be used to communicate. Bad for comoplex data.
+- Cookies
+Simple key value pairs. Can be cinfigured to be deleted. Can be handled by user and JS. Cookies can also be read by the server as they are attached to the outgoing HTTP requests. clunky to use.
+- IndexedDB
+Relatively sophisticated. Server side waali type tables vagarah. User can handle as well Js can handle. Great for complex data. Clunky to use. An in-browser database.
+- Session storage data lives as long as you page in open in the browser. Even if you reload, session storage persits.
+- Local storage aise nahi delete hoti. Vo tab delete hoti hai ya to user kare ya to browser kare jab uski memory full hone lage.
+- Advatage of cookie is that you can set them to expire and you can send them to server with request.
+- max-age flag is used to set the expiry date for cookies.
+
+23. JavaScript and Browser Support
+- Plyfills: Third party javascript feature which simply adds to the browser whatever it is missing to support a particular feature.
+- Especially PROMISES and FETCH API have these polyfills!
+- Transpilation: Transpile the newer code into older code.
+Sometimes what happens is that even core JS thingies like let, const and arrow function support is not available. Then, this transpilation comes to the rescue. Babel helps in transpilation.
+- core-js is a library with all of the polyfills.
